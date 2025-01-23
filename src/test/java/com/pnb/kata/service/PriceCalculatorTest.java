@@ -8,21 +8,20 @@ import static org.junit.Assert.*;
 
 public class PriceCalculatorTest {
 
-    @Test
-    public void addBooks() {
-
+    private PriceCalculator priceCalculator;
+    @Before
+    public void SetUp(){
+        priceCalculator = new PriceCalculator();
     }
 
     @Test
     public void getTotalPriceForOneBook() {
-        PriceCalculator priceCalculator = new PriceCalculator();
         priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
         assertEquals(50.0,priceCalculator.getTotalPrice(),0.01);
     }
 
     @Test
     public void getTotalPriceFor2DifferentBooks() {
-        PriceCalculator priceCalculator = new PriceCalculator();
         priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
         priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2008));
         assertEquals(95.0,priceCalculator.getTotalPrice(),0.01);
@@ -30,7 +29,6 @@ public class PriceCalculatorTest {
 
     @Test
     public void getTotalPriceFor3DifferentBooks() {
-        PriceCalculator priceCalculator = new PriceCalculator();
         priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
         priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2008));
         priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
@@ -39,7 +37,6 @@ public class PriceCalculatorTest {
 
     @Test
     public void getTotalPriceFor4DifferentBooks() {
-        PriceCalculator priceCalculator = new PriceCalculator();
         priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
         priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2008));
         priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
@@ -49,7 +46,6 @@ public class PriceCalculatorTest {
 
     @Test
     public void getTotalPriceFor5DifferentBooks() {
-        PriceCalculator priceCalculator = new PriceCalculator();
         priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
         priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2008));
         priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
