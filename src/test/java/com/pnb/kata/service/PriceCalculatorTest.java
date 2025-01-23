@@ -23,14 +23,14 @@ public class PriceCalculatorTest {
     @Test
     public void getTotalPriceFor2DifferentBooks() {
         priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
-        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2011));
         assertEquals(95.0,priceCalculator.getTotalPrice(),0.01);
     }
 
     @Test
     public void getTotalPriceFor3DifferentBooks() {
         priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
-        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2011));
         priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
         assertEquals(135.0,priceCalculator.getTotalPrice(),0.01);
     }
@@ -38,7 +38,7 @@ public class PriceCalculatorTest {
     @Test
     public void getTotalPriceFor4DifferentBooks() {
         priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
-        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2011));
         priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
         priceCalculator.addBooks(new Book("Test Driven Development by Example", "Kent Beck", 2003));
         assertEquals(160.0,priceCalculator.getTotalPrice(),0.01);
@@ -47,10 +47,61 @@ public class PriceCalculatorTest {
     @Test
     public void getTotalPriceFor5DifferentBooks() {
         priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
-        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2011));
         priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
         priceCalculator.addBooks(new Book("Test Driven Development by Example", "Kent Beck", 2003));
         priceCalculator.addBooks(new Book("Working Effectively With Legacy Code", "Michael C. Feathers", 2004));
         assertEquals(187.5,priceCalculator.getTotalPrice(),0.01);
+    }
+
+    @Test
+    public void getPriceFor2SameBooks(){
+        priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
+        assertEquals(100.0, priceCalculator.getTotalPrice(),0.01);
+    }
+
+    @Test
+    public void getPriceFor3Diff1DuplicateBooks(){
+        priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2011));
+        priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
+        assertEquals(185.0, priceCalculator.getTotalPrice(), 0.01);
+    }
+
+    @Test
+    public void getPriceFor4Diff1DuplicateBooks(){
+        priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2011));
+        priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
+        priceCalculator.addBooks(new Book("Test Driven Development by Example", "Kent Beck", 2003));
+        assertEquals(210.0, priceCalculator.getTotalPrice(), 0.01);
+    }
+
+    @Test
+    public void getPriceFor4Diff3DuplicateBooks(){
+        priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2011));
+        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2011));
+        priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
+        priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
+        priceCalculator.addBooks(new Book("Test Driven Development by Example", "Kent Beck", 2003));
+        assertEquals(295.0, priceCalculator.getTotalPrice(), 0.01);
+    }
+
+    @Test
+    public void getPriceFor5Diff2DuplicateBooks(){
+        priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2011));
+        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2011));
+        priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
+        priceCalculator.addBooks(new Book("Clean Architecture", "Robert Martin", 2017));
+        priceCalculator.addBooks(new Book("Test Driven Development by Example", "Kent Beck", 2003));
+        priceCalculator.addBooks(new Book("Working Effectively With Legacy Code", "Michael C. Feathers", 2004));
+        assertEquals(322.5, priceCalculator.getTotalPrice(), 0.01);
     }
 }
