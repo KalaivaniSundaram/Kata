@@ -1,5 +1,6 @@
 package com.pnb.kata.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -8,7 +9,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class Book {
 
     private String title;

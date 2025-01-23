@@ -1,11 +1,16 @@
 package com.pnb.kata;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import com.pnb.kata.model.Book;
+import com.pnb.kata.service.PriceCalculator;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.println("Hello Test");
+
+        PriceCalculator priceCalculator = new PriceCalculator();
+        priceCalculator.addBooks(new Book("Clean Code", "Robert Martin", 2008));
+        priceCalculator.addBooks(new Book("Clean Coder", "Robert Martin", 2008));
+        double price = priceCalculator.getTotalPrice();
+        System.out.println(price);
+
     }
 }
